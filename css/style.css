@@ -419,6 +419,33 @@ a:hover {
   font-size: 0.92rem;
 }
 
+.gallery {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.4rem;
+}
+
+.section-head + .gallery {
+  margin-top: 0;
+}
+
+.gallery figure {
+  margin: 0;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 2px;
+  box-shadow: var(--shadow);
+}
+
+.gallery figcaption {
+  margin: 0.7rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
 .access-card,
 .contact-card {
   background: var(--white);
@@ -489,6 +516,16 @@ a:hover {
 
   .split.reverse img {
     order: 2;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem 1.5rem;
+    align-items: start;
+  }
+
+  .gallery-perform {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
   }
 }
 
