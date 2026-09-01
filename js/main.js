@@ -7,12 +7,18 @@
 
   if (year) year.textContent = String(new Date().getFullYear());
 
+  const syncHeaderHeight = () => {
+    if (!header) return;
+    document.documentElement.style.setProperty("--header", `${header.offsetHeight}px`);
+  };
   const onScroll = () => {
     if (!header) return;
     header.classList.toggle("is-scrolled", window.scrollY > 12);
   };
+  syncHeaderHeight();
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", syncHeaderHeight);
 
   if (toggle && nav) {
     const close = () => {
@@ -26,6 +32,7 @@
       nav.classList.toggle("is-open", open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
       document.body.classList.toggle("nav-open", open);
+      syncHeaderHeight();
     });
 
     nav.querySelectorAll("a").forEach((link) => {
